@@ -15,6 +15,12 @@
 		D21A78C21BFA42B400EDD12B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21A78C01BFA42B400EDD12B /* LaunchScreen.storyboard */; };
 		D21A78CD1BFA42B400EDD12B /* Dummy_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A78CC1BFA42B400EDD12B /* Dummy_GameTests.swift */; };
 		D21A78D81BFA42B400EDD12B /* Dummy_GameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A78D71BFA42B400EDD12B /* Dummy_GameUITests.swift */; };
+		D21A78EC1BFA430700EDD12B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D21A78EB1BFA430700EDD12B /* NotificationCenter.framework */; };
+		D21A78EF1BFA430700EDD12B /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A78EE1BFA430700EDD12B /* TodayViewController.swift */; };
+		D21A78F21BFA430700EDD12B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21A78F01BFA430700EDD12B /* MainInterface.storyboard */; };
+		D21A78F61BFA430700EDD12B /* Daily Challenge.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D21A78E91BFA430700EDD12B /* Daily Challenge.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D21A78FD1BFA4C3700EDD12B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A78FB1BFA4C3700EDD12B /* SwiftyJSON.swift */; };
+		D21A78FE1BFA4C3700EDD12B /* GoalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A78FC1BFA4C3700EDD12B /* GoalService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +38,28 @@
 			remoteGlobalIDString = D21A78B11BFA42B400EDD12B;
 			remoteInfo = "Dummy Game";
 		};
+		D21A78F41BFA430700EDD12B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D21A78AA1BFA42B400EDD12B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D21A78E81BFA430700EDD12B;
+			remoteInfo = "Daily Challenge";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D21A78FA1BFA430700EDD12B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D21A78F61BFA430700EDD12B /* Daily Challenge.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D21A78B21BFA42B400EDD12B /* Dummy Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dummy Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +76,13 @@
 		D21A78D31BFA42B400EDD12B /* Dummy GameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dummy GameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D21A78D71BFA42B400EDD12B /* Dummy_GameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy_GameUITests.swift; sourceTree = "<group>"; };
 		D21A78D91BFA42B400EDD12B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D21A78E91BFA430700EDD12B /* Daily Challenge.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Daily Challenge.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D21A78EB1BFA430700EDD12B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		D21A78EE1BFA430700EDD12B /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		D21A78F11BFA430700EDD12B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		D21A78F31BFA430700EDD12B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D21A78FB1BFA4C3700EDD12B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D21A78FC1BFA4C3700EDD12B /* GoalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +107,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D21A78E61BFA430700EDD12B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D21A78EC1BFA430700EDD12B /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -82,6 +124,8 @@
 				D21A78B41BFA42B400EDD12B /* Dummy Game */,
 				D21A78CB1BFA42B400EDD12B /* Dummy GameTests */,
 				D21A78D61BFA42B400EDD12B /* Dummy GameUITests */,
+				D21A78ED1BFA430700EDD12B /* Daily Challenge */,
+				D21A78EA1BFA430700EDD12B /* Frameworks */,
 				D21A78B31BFA42B400EDD12B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +136,7 @@
 				D21A78B21BFA42B400EDD12B /* Dummy Game.app */,
 				D21A78C81BFA42B400EDD12B /* Dummy GameTests.xctest */,
 				D21A78D31BFA42B400EDD12B /* Dummy GameUITests.xctest */,
+				D21A78E91BFA430700EDD12B /* Daily Challenge.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +173,26 @@
 			path = "Dummy GameUITests";
 			sourceTree = "<group>";
 		};
+		D21A78EA1BFA430700EDD12B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D21A78EB1BFA430700EDD12B /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D21A78ED1BFA430700EDD12B /* Daily Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				D21A78FB1BFA4C3700EDD12B /* SwiftyJSON.swift */,
+				D21A78FC1BFA4C3700EDD12B /* GoalService.swift */,
+				D21A78EE1BFA430700EDD12B /* TodayViewController.swift */,
+				D21A78F01BFA430700EDD12B /* MainInterface.storyboard */,
+				D21A78F31BFA430700EDD12B /* Info.plist */,
+			);
+			path = "Daily Challenge";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,10 +203,12 @@
 				D21A78AE1BFA42B400EDD12B /* Sources */,
 				D21A78AF1BFA42B400EDD12B /* Frameworks */,
 				D21A78B01BFA42B400EDD12B /* Resources */,
+				D21A78FA1BFA430700EDD12B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D21A78F51BFA430700EDD12B /* PBXTargetDependency */,
 			);
 			name = "Dummy Game";
 			productName = "Dummy Game";
@@ -184,6 +251,23 @@
 			productReference = D21A78D31BFA42B400EDD12B /* Dummy GameUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D21A78E81BFA430700EDD12B /* Daily Challenge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D21A78F71BFA430700EDD12B /* Build configuration list for PBXNativeTarget "Daily Challenge" */;
+			buildPhases = (
+				D21A78E51BFA430700EDD12B /* Sources */,
+				D21A78E61BFA430700EDD12B /* Frameworks */,
+				D21A78E71BFA430700EDD12B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Daily Challenge";
+			productName = "Daily Challenge";
+			productReference = D21A78E91BFA430700EDD12B /* Daily Challenge.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -205,6 +289,9 @@
 						CreatedOnToolsVersion = 7.1;
 						TestTargetID = D21A78B11BFA42B400EDD12B;
 					};
+					D21A78E81BFA430700EDD12B = {
+						CreatedOnToolsVersion = 7.1;
+					};
 				};
 			};
 			buildConfigurationList = D21A78AD1BFA42B400EDD12B /* Build configuration list for PBXProject "Dummy Game" */;
@@ -223,6 +310,7 @@
 				D21A78B11BFA42B400EDD12B /* Dummy Game */,
 				D21A78C71BFA42B400EDD12B /* Dummy GameTests */,
 				D21A78D21BFA42B400EDD12B /* Dummy GameUITests */,
+				D21A78E81BFA430700EDD12B /* Daily Challenge */,
 			);
 		};
 /* End PBXProject section */
@@ -250,6 +338,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D21A78E71BFA430700EDD12B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D21A78F21BFA430700EDD12B /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +377,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D21A78E51BFA430700EDD12B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D21A78FE1BFA4C3700EDD12B /* GoalService.swift in Sources */,
+				D21A78EF1BFA430700EDD12B /* TodayViewController.swift in Sources */,
+				D21A78FD1BFA4C3700EDD12B /* SwiftyJSON.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -293,6 +399,11 @@
 			isa = PBXTargetDependency;
 			target = D21A78B11BFA42B400EDD12B /* Dummy Game */;
 			targetProxy = D21A78D41BFA42B400EDD12B /* PBXContainerItemProxy */;
+		};
+		D21A78F51BFA430700EDD12B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D21A78E81BFA430700EDD12B /* Daily Challenge */;
+			targetProxy = D21A78F41BFA430700EDD12B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -311,6 +422,14 @@
 				D21A78C11BFA42B400EDD12B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D21A78F01BFA430700EDD12B /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D21A78F11BFA430700EDD12B /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -403,6 +522,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Dummy Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.teamchaos.Dummy-Game";
@@ -414,6 +534,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Dummy Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.teamchaos.Dummy-Game";
@@ -471,6 +592,29 @@
 			};
 			name = Release;
 		};
+		D21A78F81BFA430700EDD12B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "Daily Challenge/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.teamchaos.Dummy-Game.Daily-Challenge";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D21A78F91BFA430700EDD12B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Daily Challenge/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.teamchaos.Dummy-Game.Daily-Challenge";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -504,6 +648,14 @@
 			buildConfigurations = (
 				D21A78E31BFA42B400EDD12B /* Debug */,
 				D21A78E41BFA42B400EDD12B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D21A78F71BFA430700EDD12B /* Build configuration list for PBXNativeTarget "Daily Challenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D21A78F81BFA430700EDD12B /* Debug */,
+				D21A78F91BFA430700EDD12B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
