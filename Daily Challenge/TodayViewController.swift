@@ -21,10 +21,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        print("viewDidAppear")
+        
         fetchGoalStatus { error in
             if error == nil {
                 // update content
                 print("goal update: " + (self.goalStatus?.goal_id)! ?? "INVALID")
+            }
+            else {
+                print("Error: " + error.debugDescription)
             }
         }
     }
@@ -45,8 +50,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func fetchGoalStatus(completion: (error: NSError?) -> ()) {
+        print("fetchGoalStatus")
         GoalService.sharedInstance.getStatus { counter, error in
+            print("status response")
             dispatch_async(dispatch_get_main_queue()) {
+                print("counter \(counter.debugDescription)")
                 self.goalStatus = counter
                 completion(error: error)
             }
