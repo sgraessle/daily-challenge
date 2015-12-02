@@ -32,40 +32,32 @@ public class GoalCounter : NSObject {
 }
 
 class GoalService {
+    var baseUrl = ""
+
     let session: NSURLSession
 
-    // TODO update these from build process
-    let appId = "7000"
-    let accessId = "6cn3xNkCXRkjxOHkNi75"
-    let secretKey = "gJs5tyBu4AzQqdLm8YFM8kEjdyiVIWStG6JqG89A"
-    let baseUrl = "https://tc-ccg-integration.herokuapp.com"
+    // TODO update from json
     let relativeUrl = "/v3/goals/927796e7-5ad7-4aef-ba88-7e0f32128fc4"
-    
-    // TODO get from local storage
-    let token = "SKVlrmtGUVcV1BsLUifDiU1ojkn9VbQyteHvj3Zb"
 
-    class var sharedInstance: GoalService {
-        struct Singleton {
-            static let instance = GoalService()
-        }
-        return Singleton.instance
-    }
-    
-    init() {
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+    init(token: String) {
         let epoch = String(Int(NSDate().timeIntervalSince1970))
         
-        var stringToSign = "GET\n" + epoch
-        stringToSign += "\nx-chaos-app-id:" + appId
-        stringToSign += "\nx-chaos-timestamp:" + epoch
-        stringToSign += "\nx-chaos-token:" + token
-        stringToSign += "\n" + relativeUrl
-        
-        let signature = stringToSign.hmac(HMACAlgorithm.SHA256, key: secretKey)
+        baseUrl = NSBundle.mainBundle().objectForInfoDictionaryKey("CCG Base URL") as! String
+        let appId = NSBundle.mainBundle().objectForInfoDictionaryKey("CCG App ID") as! String
+        let accessId = NSBundle.mainBundle().objectForInfoDictionaryKey("CCG Access ID") as! String
+        let secret = NSBundle.mainBundle().objectForInfoDictionaryKey("CCG Secret") as! String
 
+        let stringToSign = "GET\n" + epoch
+            + "\nx-chaos-app-id:" + appId
+            + "\nx-chaos-timestamp:" + epoch
+            + "\nx-chaos-token:" + token
+            + "\n" + relativeUrl
+        
+        let signature = stringToSign.hmac(HMACAlgorithm.SHA256, key: secret)
         print("stringToSign: " + stringToSign)
         print("signature: " + signature)
         
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.HTTPAdditionalHeaders = [
             "Authorization" : "CHAOS " + accessId + ":" + signature,
             "x-chaos-app-id" : appId,
