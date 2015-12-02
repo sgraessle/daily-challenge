@@ -22,6 +22,7 @@
 		D21A78FD1BFA4C3700EDD12B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A78FB1BFA4C3700EDD12B /* SwiftyJSON.swift */; };
 		D21A78FE1BFA4C3700EDD12B /* GoalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A78FC1BFA4C3700EDD12B /* GoalService.swift */; };
 		D254C6331BFAA47E0017FB4E /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254C6321BFAA47E0017FB4E /* HMAC.swift */; };
+		D25D6E641C0E0C28001B8800 /* Goal Data Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25D6E631C0E0C28001B8800 /* Goal Data Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		D21A78FC1BFA4C3700EDD12B /* GoalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalService.swift; sourceTree = "<group>"; };
 		D254C6321BFAA47E0017FB4E /* HMAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
 		D254C6341BFAA4D80017FB4E /* TC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TC-Bridging-Header.h"; sourceTree = "<group>"; };
+		D25D6E631C0E0C28001B8800 /* Goal Data Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Goal Data Service.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 				D21A78F31BFA430700EDD12B /* Info.plist */,
 				D254C6321BFAA47E0017FB4E /* HMAC.swift */,
 				D254C6341BFAA4D80017FB4E /* TC-Bridging-Header.h */,
+				D25D6E631C0E0C28001B8800 /* Goal Data Service.swift */,
 			);
 			path = "Daily Challenge";
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21A78FE1BFA4C3700EDD12B /* GoalService.swift in Sources */,
+				D25D6E641C0E0C28001B8800 /* Goal Data Service.swift in Sources */,
 				D21A78EF1BFA430700EDD12B /* TodayViewController.swift in Sources */,
 				D254C6331BFAA47E0017FB4E /* HMAC.swift in Sources */,
 				D21A78FD1BFA4C3700EDD12B /* SwiftyJSON.swift in Sources */,

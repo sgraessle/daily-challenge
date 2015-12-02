@@ -11,25 +11,37 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, NCWidgetProviding {
     
+    @IBOutlet weak var goalText: UILabel!
+
     var goalStatus: GoalCounter?
+    var goals = [String: GoalData]()
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("[TodayViewController] viewDidLoad")
         // Do any additional setup after loading the view from its nib.
+        fetchGoals { error in
+            if error == nil {
+                // update content
+                self.goalText.text = self.goals["146df1bb-2ecf-4374-b523-bbee3f7668f4"]?.desc
+            } else {
+                print("[TodayViewController] Error: \(error.debugDescription)")
+            }
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        print("viewDidAppear")
+        print("[TodayViewController] viewDidAppear")
         
         fetchGoalStatus { error in
             if error == nil {
                 // update content
-                print("goal update: " + (self.goalStatus?.goal_id)! ?? "INVALID")
+                print("[TodayViewController] goal update: " + (self.goalStatus?.goal_id)! ?? "INVALID")
             }
             else {
-                print("Error: " + error.debugDescription)
+                print("[TodayViewController] Error: " + error.debugDescription)
             }
         }
     }
@@ -49,15 +61,32 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         completionHandler(NCUpdateResult.NewData)
     }
     
-    func fetchGoalStatus(completion: (error: NSError?) -> ()) {
-        print("fetchGoalStatus")
-        GoalService.sharedInstance.getStatus { counter, error in
-            print("status response")
-            dispatch_async(dispatch_get_main_queue()) {
-                print("counter \(counter.debugDescription)")
+    enum RequestError : ErrorType {
+        case NilAuthToken(String)
+    }
+    
+    func fetchGoalStatus(completion: (error: ErrorType?) -> ()) {
+        print("[TodayViewController] fetchGoalStatus")
+        let suite = NSBundle.mainBundle().objectForInfoDictionaryKey("App Group") as! String
+        let defaults = NSUserDefaults.init(suiteName: suite)
+        let authToken = defaults!.stringForKey("authToken")
+        print("[TodayViewController] Found authToken '\(authToken)'")
+
+        if (authToken != nil) {
+            GoalService(token: authToken!).getStatus { counter, error in
+                print("[TodayViewController] counter \(counter.debugDescription)")
                 self.goalStatus = counter
                 completion(error: error)
             }
+        } else {
+            completion(error: RequestError.NilAuthToken("No auth token found."))
+        }
+    }
+    
+    func fetchGoals(completion: (error: ErrorType?) -> ()) {
+        GoalDataService().fetchGoals { goals, error in
+            self.goals = goals!
+            completion(error: error)
         }
     }
     
