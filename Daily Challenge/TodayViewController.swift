@@ -11,7 +11,8 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, NCWidgetProviding {
     
-    @IBOutlet weak var goalText: UILabel!
+    @IBOutlet weak var goalButton: UIButton!
+    @IBOutlet weak var statusLabel: UILabel!
 
     var goalStatus: GoalCounter?
     var goals = [String: GoalData]()
@@ -23,7 +24,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         fetchGoals { error in
             if error == nil {
                 // update content
-                self.goalText.text = self.goals["146df1bb-2ecf-4374-b523-bbee3f7668f4"]?.desc
+                self.goalButton.titleLabel?.text = self.goals["146df1bb-2ecf-4374-b523-bbee3f7668f4"]?.desc
             } else {
                 print("[TodayViewController] Error: \(error.debugDescription)")
             }
@@ -57,8 +58,18 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If an error is encountered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
-
-        completionHandler(NCUpdateResult.NewData)
+        fetchGoalStatus { error in
+            if error == nil {
+                // update status
+                completionHandler(.NewData)
+            } else {
+                completionHandler(.Failed)
+            }
+        }
+    }
+    
+    @IBAction func goalPressed(sender: UIButton, forEvent event: UIEvent) {
+        extensionContext?.openURL(NSURL(string: "nbabreakaway://")!, completionHandler: nil)
     }
     
     enum RequestError : ErrorType {
@@ -89,5 +100,4 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             completion(error: error)
         }
     }
-    
 }

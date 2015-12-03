@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Today View Controller-->
@@ -14,27 +15,56 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello World" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
-                                <rect key="frame" x="20" y="8" width="280" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's Challenge:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAg-YQ-OAZ">
+                                <rect key="frame" x="0.0" y="8" width="115" height="16"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="115" id="n6i-wW-Anx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.25882352941176467" green="0.56862745098039214" blue="0.82745098039215681" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OPEN" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fb-7N-24M">
+                                <rect key="frame" x="277" y="8" width="35" height="16"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.52156862745098043" green="0.74901960784313726" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYW-gw-Nln">
+                                <rect key="frame" x="0.0" y="28" width="312" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Beat the Los Angeles Lakers"/>
+                                <connections>
+                                    <action selector="goalPressed:forEvent:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="cWZ-pQ-7cd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
+                        <constraints>
+                            <constraint firstItem="bYW-gw-Nln" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="76O-5b-SaZ"/>
+                            <constraint firstItem="dAg-YQ-OAZ" firstAttribute="baseline" secondItem="3Fb-7N-24M" secondAttribute="baseline" id="Bbs-A6-FCf"/>
+                            <constraint firstAttribute="bottom" secondItem="bYW-gw-Nln" secondAttribute="bottom" constant="20" symbolic="YES" id="KKG-2B-kv1"/>
+                            <constraint firstItem="bYW-gw-Nln" firstAttribute="leading" secondItem="dAg-YQ-OAZ" secondAttribute="leading" id="TPb-zY-YJh"/>
+                            <constraint firstItem="dAg-YQ-OAZ" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" symbolic="YES" id="h9p-ke-8Fy"/>
+                            <constraint firstAttribute="trailing" secondItem="3Fb-7N-24M" secondAttribute="trailing" constant="8" id="j1G-bw-fL8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bYW-gw-Nln" secondAttribute="trailing" constant="-8" id="jhK-JM-HZY"/>
+                            <constraint firstItem="bYW-gw-Nln" firstAttribute="top" secondItem="3Fb-7N-24M" secondAttribute="bottom" constant="4" id="u3U-Aw-R9r"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="37"/>
+                    <size key="freeformSize" width="320" height="78"/>
                     <connections>
-                        <outlet property="goalText" destination="GcN-lo-r42" id="fXZ-Ja-Xgo"/>
+                        <outlet property="goalButton" destination="bYW-gw-Nln" id="2hp-lk-9Jg"/>
+                        <outlet property="statusLabel" destination="3Fb-7N-24M" id="p8r-I0-x4o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
