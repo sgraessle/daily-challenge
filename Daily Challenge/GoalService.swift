@@ -29,19 +29,30 @@ public class GoalCounter : NSObject {
             stats[key] = subJson.stringValue
         }
     }
+    
+    public func rewardedToday() -> Bool {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss xxxx"
+        if let lastAward = formatter.dateFromString(last_rewarded_at) {
+            let cal = NSCalendar.currentCalendar()
+            let last = cal.components([.Year, .Month, .Day], fromDate: lastAward)
+            let today = cal.components([.Year, .Month, .Day], fromDate: NSDate())
+            return last == today
+        }
+        return false
+    }
 }
 
 class GoalService {
     var baseUrl = ""
+    var relativeUrl = "/v3/goals/927796e7-5ad7-4aef-ba88-7e0f32128fc4"
 
     let session: NSURLSession
 
-    // TODO update from json
-    let relativeUrl = "/v3/goals/927796e7-5ad7-4aef-ba88-7e0f32128fc4"
-
-    init(token: String) {
+    init(token: String, goalId: String) {
         let epoch = String(Int(NSDate().timeIntervalSince1970))
         
+        relativeUrl = "/v3/goals/\(goalId)"
         baseUrl = NSBundle.mainBundle().objectForInfoDictionaryKey("CCG Base URL") as! String
         let appId = NSBundle.mainBundle().objectForInfoDictionaryKey("CCG App ID") as! String
         let accessId = NSBundle.mainBundle().objectForInfoDictionaryKey("CCG Access ID") as! String

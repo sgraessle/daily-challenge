@@ -28,6 +28,16 @@ public class GoalData : NSObject {
             stat_reset[key] = subJson.stringValue
         }
     }
+
+    static let DailyGoalId = [
+        "146df1bb-2ecf-4374-b523-bbee3f7668f4",
+        "749f97ad-7128-4b07-b93b-6b4156a2b841",
+        "82d4bd2d-f54f-4cf6-b226-9acd6d3ec69b",
+        "5fac3f18-705b-4b4d-8c47-bbf66cbbe726",
+        "e730fdba-c448-41dd-a07b-6ac6e59daca4",
+        "927796e7-5ad7-4aef-ba88-7e0f32128fc4",
+        "a348dcba-d4df-4dda-a571-f9ba6e14822a"
+    ]
 }
 
 public class GoalDataService {

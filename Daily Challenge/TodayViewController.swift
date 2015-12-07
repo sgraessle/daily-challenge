@@ -21,12 +21,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         print("[TodayViewController] viewDidLoad")
         // Do any additional setup after loading the view from its nib.
+        self.goalButton.setTitle("--", forState: UIControlState.Normal)
+        self.statusLabel.text = "--"
         fetchGoals { error in
             if error == nil {
                 // update content
-                self.goalButton.titleLabel?.text = self.goals["146df1bb-2ecf-4374-b523-bbee3f7668f4"]?.desc
+                print("[TodayViewController] fetchGoals: \(self.getDailyGoal()!.desc)")
+                self.goalButton.setTitle(self.getDailyGoal()!.desc, forState: UIControlState.Normal)
+                self.goalButton.setNeedsLayout()
             } else {
-                print("[TodayViewController] Error: \(error.debugDescription)")
+                print("[TodayViewController] fetchGoals Error: \(error.debugDescription)")
             }
         }
     }
@@ -39,7 +43,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         fetchGoalStatus { error in
             if error == nil {
                 // update content
-                print("[TodayViewController] goal update: " + (self.goalStatus?.goal_id)! ?? "INVALID")
+                if let _ = self.goalStatus?.rewardedToday() {
+                    self.statusLabel.text = "COMPLETED"
+                } else {
+                    self.statusLabel.text = "OPEN"
+                }
             }
             else {
                 print("[TodayViewController] Error: " + error.debugDescription)
@@ -73,31 +81,48 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     enum RequestError : ErrorType {
-        case NilAuthToken(String)
+        case MissingGoalData
+        case NilAuthToken
     }
     
     func fetchGoalStatus(completion: (error: ErrorType?) -> ()) {
         print("[TodayViewController] fetchGoalStatus")
-        let suite = NSBundle.mainBundle().objectForInfoDictionaryKey("App Group") as! String
-        let defaults = NSUserDefaults.init(suiteName: suite)
-        let authToken = defaults!.stringForKey("authToken")
-        print("[TodayViewController] Found authToken '\(authToken)'")
-
-        if (authToken != nil) {
-            GoalService(token: authToken!).getStatus { counter, error in
-                print("[TodayViewController] counter \(counter.debugDescription)")
-                self.goalStatus = counter
-                completion(error: error)
+        let defaults = NSUserDefaults.init(suiteName: (NSBundle.mainBundle().objectForInfoDictionaryKey("App Group") as! String))
+        if let authToken = defaults?.stringForKey("authToken") {
+            print("[TodayViewController] Found authToken '\(authToken)'")
+            if let goalId = self.getDailyGoal()?.id {
+                GoalService(token: authToken, goalId: goalId).getStatus { counter, error in
+                    print("[TodayViewController] counter \(counter.debugDescription)")
+                    self.goalStatus = counter
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(error: error)
+                    }
+                }
+            } else {
+                completion(error: RequestError.MissingGoalData)
             }
         } else {
-            completion(error: RequestError.NilAuthToken("No auth token found."))
+            completion(error: RequestError.NilAuthToken)
         }
     }
     
     func fetchGoals(completion: (error: ErrorType?) -> ()) {
+        print("[TodayViewController] fetchGoals")
         GoalDataService().fetchGoals { goals, error in
             self.goals = goals!
-            completion(error: error)
+            dispatch_async(dispatch_get_main_queue()) {
+                completion(error: error)
+            }
         }
+    }
+    
+    func dayOfWeek() -> Int {
+        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let comp = cal.components(.Weekday, fromDate: NSDate())
+        return comp.weekday
+    }
+    
+    func getDailyGoal() -> GoalData? {
+        return goals[GoalData.DailyGoalId[dayOfWeek() - 1]]
     }
 }

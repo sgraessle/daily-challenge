@@ -2,19 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
+	<key>App Group</key>
+	<string>group.com.teamchaos.nbabreakaway</string>
+	<key>CCG Access ID</key>
+	<string>6cn3xNkCXRkjxOHkNi75</string>
+	<key>CCG App ID</key>
+	<string>7000</string>
+	<key>CCG Base URL</key>
+	<string>https://tc-ccg-integration.herokuapp.com</string>
+	<key>CCG Goal Data URL</key>
+	<string>https://s3.amazonaws.com/assets-integration.gamepass.com/7000/data/goals.json</string>
+	<key>CCG Secret</key>
+	<string>gJs5tyBu4AzQqdLm8YFM8kEjdyiVIWStG6JqG89A</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>NBA Breakaway Challenge</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
-	<key>CCG Goal Data URL</key>
-	<string>https://s3.amazonaws.com/assets-integration.gamepass.com/7000/data/goals.json</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -29,16 +34,11 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>App Group</key>
-	<string>group.com.teamchaos.nbabreakaway</string>
-	<key>CCG Base URL</key>
-	<string>https://tc-ccg-integration.herokuapp.com</string>
-	<key>CCG App ID</key>
-	<string>7000</string>
-	<key>CCG Access ID</key>
-	<string>6cn3xNkCXRkjxOHkNi75</string>
-	<key>CCG Secret</key>
-	<string>gJs5tyBu4AzQqdLm8YFM8kEjdyiVIWStG6JqG89A</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionMainStoryboard</key>
