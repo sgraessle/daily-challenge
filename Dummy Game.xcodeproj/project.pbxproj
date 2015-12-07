@@ -85,6 +85,7 @@
 		D21A78F31BFA430700EDD12B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D21A78FB1BFA4C3700EDD12B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		D21A78FC1BFA4C3700EDD12B /* GoalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalService.swift; sourceTree = "<group>"; };
+		D23F41781C16001400AE6F89 /* Daily Challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Daily Challenge.entitlements"; sourceTree = "<group>"; };
 		D254C6321BFAA47E0017FB4E /* HMAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
 		D254C6341BFAA4D80017FB4E /* TC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TC-Bridging-Header.h"; sourceTree = "<group>"; };
 		D25D6E631C0E0C28001B8800 /* Goal Data Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Goal Data Service.swift"; sourceTree = "<group>"; };
@@ -189,6 +190,7 @@
 		D21A78ED1BFA430700EDD12B /* Daily Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				D23F41781C16001400AE6F89 /* Daily Challenge.entitlements */,
 				D21A78FB1BFA4C3700EDD12B /* SwiftyJSON.swift */,
 				D21A78FC1BFA4C3700EDD12B /* GoalService.swift */,
 				D21A78EE1BFA430700EDD12B /* TodayViewController.swift */,
@@ -288,6 +290,7 @@
 				TargetAttributes = {
 					D21A78B11BFA42B400EDD12B = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 3C2D43ET9Z;
 					};
 					D21A78C71BFA42B400EDD12B = {
 						CreatedOnToolsVersion = 7.1;
@@ -299,6 +302,12 @@
 					};
 					D21A78E81BFA430700EDD12B = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 3C2D43ET9Z;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -532,10 +541,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Dummy Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.teamchaos.Dummy-Game";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamchaos.nbabreakaway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -544,10 +554,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Dummy Game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.teamchaos.Dummy-Game";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamchaos.nbabreakaway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -605,6 +616,9 @@
 		D21A78F81BFA430700EDD12B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Daily Challenge/Daily Challenge.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -612,8 +626,9 @@
 				);
 				INFOPLIST_FILE = "Daily Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.teamchaos.Dummy-Game.Daily-Challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.teamchaos.nbabreakaway.NBA-Breakaway-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Daily Challenge/TC-Bridging-Header.h";
 			};
@@ -622,14 +637,18 @@
 		D21A78F91BFA430700EDD12B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Daily Challenge/Daily Challenge.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/iOS",
 				);
 				INFOPLIST_FILE = "Daily Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.teamchaos.Dummy-Game.Daily-Challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.teamchaos.nbabreakaway.NBA-Breakaway-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Daily Challenge/TC-Bridging-Header.h";
 			};
