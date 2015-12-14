@@ -88,8 +88,7 @@ class GoalService {
                 print("responseDict:\n \(responseData.debugDescription)")
                 let payload = responseData["payload"]
                 let gc = payload["goal_counter"]
-                let counter = GoalCounter(fromJSON: gc)
-                completion(counter: counter, error: nil)
+                completion(counter: GoalCounter(fromJSON: gc), error: nil)
             } else {
                 completion(counter: nil, error: error)
             }

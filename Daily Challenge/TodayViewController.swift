@@ -42,17 +42,21 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         fetchGoalStatus { error in
             if error == nil {
-                // update content
-                if let _ = self.goalStatus?.rewardedToday() {
-                    self.statusLabel.text = "COMPLETED"
-                } else {
-                    self.statusLabel.text = "OPEN"
-                }
+                self.updateStatus()
             }
             else {
                 print("[TodayViewController] Error: " + error.debugDescription)
             }
         }
+    }
+    
+    func updateStatus() {
+        if self.goalStatus != nil && self.goalStatus!.rewardedToday() {
+            self.statusLabel.text = "COMPLETED"
+        } else {
+            self.statusLabel.text = "OPEN"
+        }
+        self.statusLabel.setNeedsLayout()
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,7 +72,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's an update, use NCUpdateResult.NewData
         fetchGoalStatus { error in
             if error == nil {
-                // update status
+                self.updateStatus()
                 completionHandler(.NewData)
             } else {
                 completionHandler(.Failed)
