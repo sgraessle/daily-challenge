@@ -81,7 +81,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     @IBAction func goalPressed(sender: UIButton, forEvent event: UIEvent) {
-        extensionContext?.openURL(NSURL(string: "nbabreakaway://")!, completionHandler: nil)
+        let url = NSBundle.mainBundle().objectForInfoDictionaryKey("CCG Launch URL") as! String
+        extensionContext?.openURL(NSURL(string: url)!, completionHandler: nil)
     }
     
     enum RequestError : ErrorType {
